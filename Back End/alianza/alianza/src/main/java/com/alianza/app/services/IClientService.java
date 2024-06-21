@@ -12,7 +12,7 @@ public interface IClientService {
     List<ClientDto> findAll();
 
     List<ClientEntity> getFakeClients(int count);
-    ClientDto getSharedKey(String sharedKey);
+    ClientDto findBySharedKey(String sharedKey);
     ClientDto save(ClientDto clientDto);
 
     public Page<ClientEntity> findAll(Pageable pageable);

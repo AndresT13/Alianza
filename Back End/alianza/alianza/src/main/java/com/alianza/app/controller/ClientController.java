@@ -57,7 +57,7 @@ public class ClientController {
     @GetMapping(path="/sharedKey/{sharedKey}")
     public ResponseEntity<?> getNumberDocument(@PathVariable String sharedKey) {
         List<ClientDto> getList = clientService.findAll();
-        ClientDto cliente = clientService.getSharedKey(sharedKey);
+        ClientDto cliente = clientService.findBySharedKey(sharedKey);
 
         if (cliente == null) {
             throw new ResourceNotFoundException("cliente", "número de documento: ", sharedKey);
@@ -108,6 +108,8 @@ public class ClientController {
             throw new BadRequestException(exDt.getMessage());
         }
     }
+
+
 
 
 }

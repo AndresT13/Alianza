@@ -21,7 +21,6 @@ public class ClientServiceImpl implements IClientService {
 
     private final ClientDao clientRepository;
 
-
     private final Faker faker = new Faker();
 
     @Autowired
@@ -41,9 +40,11 @@ public class ClientServiceImpl implements IClientService {
     }
 
     @Override
-    public ClientDto getSharedKey(String sharedKey) {
-        return null;
+    public ClientDto findBySharedKey(String sharedKey) {
+        Optional<ClientEntity> clientEntityOptional = clientRepository.findBySharedKey(sharedKey);
+        return clientEntityOptional.map(MapperObjectsClient::clientEntityToClientDto).orElse(null);
     }
+
 
 
     public List<ClientEntity> getFakeClients(int count) {
